@@ -1,7 +1,49 @@
 doctype html
-html
+html(lang='en')
   head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    title Members Only: #{title}
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    link(rel='stylesheet' href='/stylesheets/style.css')
+    link(rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon")
   body
-    block content
+    div.container
+      header
+        if user
+          nav.navbar-left
+            ul.items-left-logged
+              li logged in as
+              li #{user.username} (#{user.status})
+              li
+                a(href='/logout') Log Out
+        else
+          nav.navbar-left
+            ul.items-left
+              li
+                a(href='/signup') Sign Up
+        nav.app-name
+          ul
+            li
+              a(href='/') Members Only
+        if user 
+          nav.navbar-right
+            ul.items-right-logged
+              li
+                a(href='/new-message') New Message
+              if (!user.is_member)
+                li
+                  a(href='/become-member') Become Member
+              if (!user.is_admin)
+                li
+                  a(href='/become-admin') Become Admin
+        else
+          nav.navbar-right
+            ul.items-right
+              li
+                a(href='/login') Log In
+      main
+        block content
+      footer
+        p developed by dziubenzo
+        a(href="https://github.com/dziubenzo" target="_blank" rel="noopener noreferrer" aria-label="Developer's GitHub page, opens in new tab")
+          img(src="/images/github.svg" alt="GitHub Logo")
