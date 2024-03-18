@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+$bg-colour: #0c1a1a;
+$primary-colour: #6acfc7;
+$secondary-colour: #ffffff;
+$font-family: 'Sarabun', sans-serif;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-family;
+  font-weight: 400;
+  font-style: normal;
+  background-color: $bg-colour;
+  color: $primary-colour;
+}
+
+header {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  .navbar-left,
+  .navbar-right {
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar-left {
+    justify-content: flex-start;
+  }
+
+  .navbar-right {
+    justify-content: flex-end;
+  }
+
+  ul {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      a {
+        color: $secondary-colour;
+        text-decoration-color: $primary-colour;
+        text-underline-offset: 0.5em;
+      }
+    }
+  }
+
+  .items-left {
+    justify-content: flex-start;
+  }
+
+  .items-right {
+    justify-content: flex-end;
+  }
+
+  .items-left-logged,
+  .items-right-logged {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .items-left-logged {
+    align-items: flex-start;
+  }
+
+  .items-right-logged {
+    align-items: flex-end;
+  }
+
+  .app-name {
+    align-self: center;
+    font-size: 2.5rem;
+  }
+}
+
+footer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+
+  img {
+    width: 32px;
+  }
+}
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  place-items: center;
+  padding: 1em;
+  min-height: 100svh;
+  max-width: 1200px;
+}

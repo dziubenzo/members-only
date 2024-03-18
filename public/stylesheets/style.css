@@ -1,5 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Sarabun", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  background-color: #0c1a1a;
+  color: #6acfc7;
 }
+
+header {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+header .navbar-left,
+header .navbar-right {
+  display: flex;
+  align-items: center;
+}
+header .navbar-left {
+  justify-content: flex-start;
+}
+header .navbar-right {
+  justify-content: flex-end;
+}
+header ul {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+}
+header ul li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+header ul li a {
+  color: #ffffff;
+  text-decoration-color: #6acfc7;
+  text-underline-offset: 0.5em;
+}
+header .items-left {
+  justify-content: flex-start;
+}
+header .items-right {
+  justify-content: flex-end;
+}
+header .items-left-logged,
+header .items-right-logged {
+  flex-direction: column;
+  gap: 8px;
+}
+header .items-left-logged {
+  align-items: flex-start;
+}
+header .items-right-logged {
+  align-items: flex-end;
+}
+header .app-name {
+  align-self: center;
+  font-size: 2.5rem;
+}
+
+footer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+footer img {
+  width: 32px;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  place-items: center;
+  padding: 1em;
+  min-height: 100svh;
+  max-width: 1200px;
+}/*# sourceMappingURL=style.css.map */
