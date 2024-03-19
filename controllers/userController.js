@@ -127,6 +127,18 @@ exports.log_in_post = [
   },
 ];
 
+exports.log_out = asyncHandler(async (req, res, next) => {
+  req.logout((err) => {
+    if (err) {
+      res.render('error', {
+        message: 'Logout error. Please try again',
+      });
+      return;
+    }
+    res.redirect('/');
+  });
+});
+
 exports.become_member_get = asyncHandler(async (req, res, next) => {
   res.send('Become member GET');
 });

@@ -3,28 +3,31 @@ const router = express.Router();
 
 const userController = require('../controllers/userController');
 
-/* GET sign up */
+// GET sign up
 router.get('/signup', userController.sign_up_get);
 
-/* POST sign up */
+// POST sign up
 router.post('/signup', userController.sign_up_post);
 
-/* GET log in */
+// GET log in
 router.get('/login', userController.log_in_get);
 
-/* POST log in */
+// POST log in
 router.post('/login', userController.log_in_post);
 
-/* GET become member */
+// GET log out
+router.get('/logout', userController.log_out);
+
+// GET become member
 router.get('/become-member', userController.become_member_get);
 
-/* POST become member */
+// POST become member
 router.post('/become-member', userController.become_member_post);
 
-/* GET become admin */
+// GET become admin
 router.get('/become-admin', userController.become_admin_get);
 
-/* POST become admin */
+// POST become admin
 router.post('/become-admin', userController.become_admin_post);
 
 module.exports = router;
