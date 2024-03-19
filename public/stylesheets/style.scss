@@ -2,6 +2,8 @@
 
 $bg-colour: #0c1a1a;
 $primary-colour: #6acfc7;
+$primary-colour-icon: invert(85%) sepia(12%) saturate(1320%) hue-rotate(121deg)
+  brightness(87%) contrast(91%);
 $secondary-colour: #ffffff;
 $font-family: 'Sarabun', sans-serif;
 
@@ -19,6 +21,7 @@ $font-family: 'Sarabun', sans-serif;
 header {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 2em;
 
   .navbar-left,
   .navbar-right {
@@ -75,17 +78,18 @@ header {
   }
 
   .app-name {
+    text-align: center;
     align-self: center;
     font-size: 2.5rem;
   }
 }
 
 footer {
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 12px;
+  margin-top: 2em;
 
   img {
     width: 32px;
@@ -141,7 +145,7 @@ body {
       textarea {
         outline: 2px solid $primary-colour;
         border: none;
-        max-width: 200px;
+        min-width: 300px;
         max-height: 40px;
         padding: 1em;
         border-radius: 8px;
@@ -171,6 +175,65 @@ body {
 
         &:focus-visible {
           outline: 3px solid $secondary-colour;
+        }
+      }
+    }
+  }
+}
+
+.all-messages-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  text-align: center;
+
+  h1 {
+    color: $secondary-colour;
+  }
+
+  .messages {
+    display: grid;
+    gap: 48px;
+    max-width: 400px;
+
+    .message-card {
+      position: relative;
+      display: grid;
+      grid-template-rows: 1fr 5fr 1fr 1fr;
+      place-items: center;
+      outline: 2px solid $primary-colour;
+      border-radius: 8px;
+      padding: 1em;
+
+      .title,
+      .author,
+      .time,
+      .author-restricted,
+      .time-restricted {
+        color: $secondary-colour;
+        padding: 0.25em;
+      }
+
+      .author-restricted,
+      .time-restricted {
+        filter: blur(4px);
+      }
+
+      form {
+        position: absolute;
+        bottom: 0.5em;
+        right: 0.5em;
+
+        button {
+          border: none;
+          cursor: pointer;
+          appearance: none;
+
+          img {
+            width: 32px;
+            background-color: initial;
+            filter: $primary-colour-icon;
+          }
         }
       }
     }

@@ -12,8 +12,8 @@ html(lang='en')
         if user
           nav.navbar-left
             ul.items-left-logged
-              li logged in as
-              li #{user.username} (#{user.status})
+              li #{user.username}
+              li #{user.status}
               li
                 a(href='/logout') Log Out
         else

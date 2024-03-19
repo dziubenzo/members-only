@@ -13,6 +13,7 @@
 header {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 2em;
 }
 header .navbar-left,
 header .navbar-right {
@@ -58,16 +59,17 @@ header .items-right-logged {
   align-items: flex-end;
 }
 header .app-name {
+  text-align: center;
   align-self: center;
   font-size: 2.5rem;
 }
 
 footer {
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 12px;
+  margin-top: 2em;
 }
 footer img {
   width: 32px;
@@ -129,7 +131,7 @@ body {
 .new-message-wrapper form .form-control textarea {
   outline: 2px solid #6acfc7;
   border: none;
-  max-width: 200px;
+  min-width: 300px;
   max-height: 40px;
   padding: 1em;
   border-radius: 8px;
@@ -165,4 +167,57 @@ body {
 .log-in-wrapper form .submit-button button:focus-visible,
 .new-message-wrapper form .submit-button button:focus-visible {
   outline: 3px solid #ffffff;
+}
+
+.all-messages-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  text-align: center;
+}
+.all-messages-wrapper h1 {
+  color: #ffffff;
+}
+.all-messages-wrapper .messages {
+  display: grid;
+  gap: 48px;
+  max-width: 400px;
+}
+.all-messages-wrapper .messages .message-card {
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr 5fr 1fr 1fr;
+  place-items: center;
+  outline: 2px solid #6acfc7;
+  border-radius: 8px;
+  padding: 1em;
+}
+.all-messages-wrapper .messages .message-card .title,
+.all-messages-wrapper .messages .message-card .author,
+.all-messages-wrapper .messages .message-card .time,
+.all-messages-wrapper .messages .message-card .author-restricted,
+.all-messages-wrapper .messages .message-card .time-restricted {
+  color: #ffffff;
+  padding: 0.25em;
+}
+.all-messages-wrapper .messages .message-card .author-restricted,
+.all-messages-wrapper .messages .message-card .time-restricted {
+  filter: blur(4px);
+}
+.all-messages-wrapper .messages .message-card form {
+  position: absolute;
+  bottom: 0.5em;
+  right: 0.5em;
+}
+.all-messages-wrapper .messages .message-card form button {
+  border: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+.all-messages-wrapper .messages .message-card form button img {
+  width: 32px;
+  background-color: initial;
+  filter: invert(85%) sepia(12%) saturate(1320%) hue-rotate(121deg) brightness(87%) contrast(91%);
 }/*# sourceMappingURL=style.css.map */

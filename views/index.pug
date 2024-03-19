@@ -1,3 +1,24 @@
 extends layout
 
 block content
+  div.all-messages-wrapper
+    if allMessages.length
+      h1 All Messages (#{allMessages.length})
+      div.messages
+        for message in allMessages
+          div.message-card
+            h3.title #{message.title}
+            p #{message.content}
+            if user
+              p.author #{user.is_member ? message.author.full_name : 'MEMBERS ONLY'}
+              p.time #{user.is_member ? message.time_distance : 'MEMBERS ONLY'}
+            else
+              p.author-restricted MEMBERS ONLY
+              p.time-restricted MEMBERS ONLY
+            if user
+              if user.is_admin
+                form(action="/delete-message/" + message._id method="post")
+                  button(type="submit")
+                    img(src="/images/delete.svg" alt="Delete Message Button")
+    else
+      h1 No messages to show.
