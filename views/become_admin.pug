@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  div.become-admin-wrapper
+    form(method="post")
+      div.form-control
+        label(for="answer_admin") ????
+        input#answer_admin(type="password" name="answer_admin" required)
+      div.submit-button
+        button(type="submit") Become Admin
+  if errors
+    div.errors
+      for error in errors
+        p ERROR: #{error.msg}

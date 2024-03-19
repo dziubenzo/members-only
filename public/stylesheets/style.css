@@ -98,7 +98,8 @@ body {
 .sign-up-wrapper,
 .log-in-wrapper,
 .new-message-wrapper,
-.become-member-wrapper {
+.become-member-wrapper,
+.become-admin-wrapper {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -107,13 +108,15 @@ body {
 .sign-up-wrapper h1,
 .log-in-wrapper h1,
 .new-message-wrapper h1,
-.become-member-wrapper h1 {
+.become-member-wrapper h1,
+.become-admin-wrapper h1 {
   color: #ffffff;
 }
 .sign-up-wrapper form,
 .log-in-wrapper form,
 .new-message-wrapper form,
-.become-member-wrapper form {
+.become-member-wrapper form,
+.become-admin-wrapper form {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -121,7 +124,8 @@ body {
 .sign-up-wrapper form .form-control,
 .log-in-wrapper form .form-control,
 .new-message-wrapper form .form-control,
-.become-member-wrapper form .form-control {
+.become-member-wrapper form .form-control,
+.become-admin-wrapper form .form-control {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -134,7 +138,9 @@ body {
 .new-message-wrapper form .form-control input,
 .new-message-wrapper form .form-control textarea,
 .become-member-wrapper form .form-control input,
-.become-member-wrapper form .form-control textarea {
+.become-member-wrapper form .form-control textarea,
+.become-admin-wrapper form .form-control input,
+.become-admin-wrapper form .form-control textarea {
   outline: 2px solid #6acfc7;
   border: none;
   min-width: 300px;
@@ -150,36 +156,57 @@ body {
 .new-message-wrapper form .form-control input:focus-visible,
 .new-message-wrapper form .form-control textarea:focus-visible,
 .become-member-wrapper form .form-control input:focus-visible,
-.become-member-wrapper form .form-control textarea:focus-visible {
+.become-member-wrapper form .form-control textarea:focus-visible,
+.become-admin-wrapper form .form-control input:focus-visible,
+.become-admin-wrapper form .form-control textarea:focus-visible {
   outline: 3px solid #ffffff;
 }
 .sign-up-wrapper form .form-control textarea,
 .log-in-wrapper form .form-control textarea,
 .new-message-wrapper form .form-control textarea,
-.become-member-wrapper form .form-control textarea {
+.become-member-wrapper form .form-control textarea,
+.become-admin-wrapper form .form-control textarea {
   max-height: initial;
   resize: vertical;
 }
 .sign-up-wrapper form .form-control input#answer,
 .log-in-wrapper form .form-control input#answer,
 .new-message-wrapper form .form-control input#answer,
-.become-member-wrapper form .form-control input#answer {
+.become-member-wrapper form .form-control input#answer,
+.become-admin-wrapper form .form-control input#answer {
   min-width: initial;
   width: 50px;
   text-align: center;
   margin-top: 1em;
 }
+.sign-up-wrapper form .form-control input#answer_admin,
+.log-in-wrapper form .form-control input#answer_admin,
+.new-message-wrapper form .form-control input#answer_admin,
+.become-member-wrapper form .form-control input#answer_admin,
+.become-admin-wrapper form .form-control input#answer_admin {
+  min-width: initial;
+  width: 75px;
+  text-align: center;
+  margin-top: 1em;
+}
 .sign-up-wrapper form .form-control label[for=answer],
+.sign-up-wrapper form .form-control label[for=answer_admin],
 .log-in-wrapper form .form-control label[for=answer],
+.log-in-wrapper form .form-control label[for=answer_admin],
 .new-message-wrapper form .form-control label[for=answer],
-.become-member-wrapper form .form-control label[for=answer] {
+.new-message-wrapper form .form-control label[for=answer_admin],
+.become-member-wrapper form .form-control label[for=answer],
+.become-member-wrapper form .form-control label[for=answer_admin],
+.become-admin-wrapper form .form-control label[for=answer],
+.become-admin-wrapper form .form-control label[for=answer_admin] {
   color: #ffffff;
   font-size: 2.5rem;
 }
 .sign-up-wrapper form .submit-button button,
 .log-in-wrapper form .submit-button button,
 .new-message-wrapper form .submit-button button,
-.become-member-wrapper form .submit-button button {
+.become-member-wrapper form .submit-button button,
+.become-admin-wrapper form .submit-button button {
   outline: 2px solid #6acfc7;
   color: #ffffff;
   border: none;
@@ -192,7 +219,8 @@ body {
 .sign-up-wrapper form .submit-button button:focus-visible,
 .log-in-wrapper form .submit-button button:focus-visible,
 .new-message-wrapper form .submit-button button:focus-visible,
-.become-member-wrapper form .submit-button button:focus-visible {
+.become-member-wrapper form .submit-button button:focus-visible,
+.become-admin-wrapper form .submit-button button:focus-visible {
   outline: 3px solid #ffffff;
 }
 

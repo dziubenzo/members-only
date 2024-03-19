@@ -121,7 +121,8 @@ body {
 .sign-up-wrapper,
 .log-in-wrapper,
 .new-message-wrapper,
-.become-member-wrapper {
+.become-member-wrapper,
+.become-admin-wrapper {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -169,7 +170,15 @@ body {
         margin-top: 1em;
       }
 
-      label[for='answer'] {
+      input#answer_admin {
+        min-width: initial;
+        width: 75px;
+        text-align: center;
+        margin-top: 1em;
+      }
+
+      label[for='answer'],
+      label[for='answer_admin'] {
         color: $secondary-colour;
         font-size: 2.5rem;
       }
