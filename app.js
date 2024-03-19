@@ -5,6 +5,10 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 require('dotenv').config();
 
+const session = require('express-session');
+const passport = require('passport');
+const passportConfig = require('./config/passport');
+
 const indexRouter = require('./routes/index');
 const messageRouter = require('./routes/message');
 const userRouter = require('./routes/user');
@@ -33,23 +37,37 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(
+  session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: true,
+  })
+);
+app.use(passport.session());
+
+passport.use(passportConfig.localStrategy);
+passport.serializeUser(passportConfig.serialiseFunction);
+passport.deserializeUser(passportConfig.deserialiseFunction);
+
+app.use(passportConfig.userObjectMiddleware);
 
 app.use('/', indexRouter);
 app.use('/', messageRouter);
 app.use('/', userRouter);
 
-// catch 404 and forward to error handler
+// Catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
 });
 
-// error handler
+// Error handler
 app.use(function (err, req, res, next) {
-  // set locals, only providing error in development
+  // Set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
+  // Render the error page
   res.status(err.status || 500);
   res.render('error');
 });
