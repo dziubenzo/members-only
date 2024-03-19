@@ -4,13 +4,13 @@ const isNotLoggedIn = require('../config/passport').isNotLoggedIn;
 
 const asyncHandler = require('express-async-handler');
 
-exports.create_message_get = [
+exports.new_message_get = [
   isNotLoggedIn,
   asyncHandler(async (req, res, next) => {
-    res.send('Create message GET');
+    res.render('new_message', { title: 'New Message' });
   }),
 ];
 
-exports.create_message_post = asyncHandler(async (req, res, next) => {
+exports.new_message_post = asyncHandler(async (req, res, next) => {
   res.send('Create message POST');
 });
