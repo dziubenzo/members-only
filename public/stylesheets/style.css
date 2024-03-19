@@ -87,6 +87,12 @@ body {
   max-width: 1200px;
 }
 
+.errors p {
+  color: red;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
 .sign-up-wrapper {
   display: flex;
   flex-direction: column;
@@ -126,7 +132,7 @@ body {
   font-size: 1.5rem;
   padding: 0.5em;
   border-radius: 8px;
-  margin-top: 1em;
+  margin: 1em 0;
   cursor: pointer;
 }
 .sign-up-wrapper form .submit-button button:focus-visible {
