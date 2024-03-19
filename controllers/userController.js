@@ -4,6 +4,7 @@ const asyncHandler = require('express-async-handler');
 const { body, validationResult } = require('express-validator');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const passport = require('passport');
 
 exports.sign_up_get = asyncHandler(async (req, res, next) => {
   // TODO: Redirect to Home if user is authenticated
@@ -112,9 +113,19 @@ exports.log_in_get = asyncHandler(async (req, res, next) => {
   res.render('log_in', { title: 'Log In' });
 });
 
-exports.log_in_post = asyncHandler(async (req, res, next) => {
-  res.send('Log in POST');
-});
+exports.log_in_post = [
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failWithError: true,
+  }),
+
+  // Show login page with error if login attempt unsuccessful
+  (err, req, res, next) => {
+    const errorArray = [{ msg: 'Login failed. Please try again.' }];
+    res.render('log_in', { errors: errorArray });
+    return;
+  },
+];
 
 exports.become_member_get = asyncHandler(async (req, res, next) => {
   res.send('Become member GET');
