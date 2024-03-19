@@ -187,7 +187,7 @@ exports.become_admin_get = [
   isNotLoggedIn,
   isAdmin,
   asyncHandler(async (req, res, next) => {
-    res.send('Become admin GET');
+    res.render('become_admin', { title: 'Become Admin' });
   }),
 ];
 
