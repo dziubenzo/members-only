@@ -163,7 +163,7 @@ body {
         resize: vertical;
       }
 
-      input#answer {
+      input#answer_member {
         min-width: initial;
         width: 50px;
         text-align: center;
@@ -177,7 +177,7 @@ body {
         margin-top: 1em;
       }
 
-      label[for='answer'],
+      label[for='answer_member'],
       label[for='answer_admin'] {
         color: $secondary-colour;
         font-size: 2.5rem;

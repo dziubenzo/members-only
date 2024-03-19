@@ -153,8 +153,8 @@ exports.become_member_get = [
 ];
 
 exports.become_member_post = [
-  // Validate and sanitise answer
-  body('answer', 'Wrong answer! Tip: the answer is 6, but not quite.')
+  // Validate and sanitise member answer
+  body('answer_member', 'Wrong answer! Tip: the answer is 6, but not quite.')
     .trim()
     .isLength({ min: 1 })
     .escape()
@@ -191,6 +191,34 @@ exports.become_admin_get = [
   }),
 ];
 
-exports.become_admin_post = asyncHandler(async (req, res, next) => {
-  res.send('Become admin POST');
-});
+exports.become_admin_post = [
+  // Validate and sanitise admin answer
+  body('answer_admin', 'Wrong answer! The answer is my year of birth, BTW.')
+    .trim()
+    .isLength({ min: 1 })
+    .escape()
+    .custom((value) => {
+      return value.toString() === process.env.ADMIN_CORRECT_ANSWER.toString();
+    }),
+
+  asyncHandler(async (req, res, next) => {
+    // Extract the validation errors from a request
+    const errors = validationResult(req);
+
+    const userID = req.user._id;
+
+    // Render the page again with sanitised values and error messages if there are errors
+    if (!errors.isEmpty()) {
+      res.render('become_admin', {
+        title: 'Become Admin',
+        errors: errors.array(),
+      });
+      return;
+    } else {
+      // Update user permissions and redirect to Home
+      // Update is_member field as well, just to be on the safe side
+      await User.findByIdAndUpdate(userID, { is_member: true, is_admin: true });
+      res.redirect('/');
+    }
+  }),
+];

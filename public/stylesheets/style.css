@@ -169,11 +169,11 @@ body {
   max-height: initial;
   resize: vertical;
 }
-.sign-up-wrapper form .form-control input#answer,
-.log-in-wrapper form .form-control input#answer,
-.new-message-wrapper form .form-control input#answer,
-.become-member-wrapper form .form-control input#answer,
-.become-admin-wrapper form .form-control input#answer {
+.sign-up-wrapper form .form-control input#answer_member,
+.log-in-wrapper form .form-control input#answer_member,
+.new-message-wrapper form .form-control input#answer_member,
+.become-member-wrapper form .form-control input#answer_member,
+.become-admin-wrapper form .form-control input#answer_member {
   min-width: initial;
   width: 50px;
   text-align: center;
@@ -189,15 +189,15 @@ body {
   text-align: center;
   margin-top: 1em;
 }
-.sign-up-wrapper form .form-control label[for=answer],
+.sign-up-wrapper form .form-control label[for=answer_member],
 .sign-up-wrapper form .form-control label[for=answer_admin],
-.log-in-wrapper form .form-control label[for=answer],
+.log-in-wrapper form .form-control label[for=answer_member],
 .log-in-wrapper form .form-control label[for=answer_admin],
-.new-message-wrapper form .form-control label[for=answer],
+.new-message-wrapper form .form-control label[for=answer_member],
 .new-message-wrapper form .form-control label[for=answer_admin],
-.become-member-wrapper form .form-control label[for=answer],
+.become-member-wrapper form .form-control label[for=answer_member],
 .become-member-wrapper form .form-control label[for=answer_admin],
-.become-admin-wrapper form .form-control label[for=answer],
+.become-admin-wrapper form .form-control label[for=answer_member],
 .become-admin-wrapper form .form-control label[for=answer_admin] {
   color: #ffffff;
   font-size: 2.5rem;
