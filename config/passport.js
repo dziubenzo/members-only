@@ -57,3 +57,21 @@ exports.isNotLoggedIn = (req, res, next) => {
     next();
   }
 };
+
+// Redirect to Home when logged in and member
+exports.isMember = (req, res, next) => {
+  if (req.user.is_member) {
+    res.redirect('/');
+  } else {
+    next();
+  }
+};
+
+// Redirect to Home when logged in and admin
+exports.isAdmin = (req, res, next) => {
+  if (req.user.is_admin) {
+    res.redirect('/');
+  } else {
+    next();
+  }
+};

@@ -6,6 +6,8 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const isLoggedIn = require('../config/passport').isLoggedIn;
 const isNotLoggedIn = require('../config/passport').isNotLoggedIn;
+const isMember = require('../config/passport').isMember;
+const isAdmin = require('../config/passport').isAdmin;
 
 exports.sign_up_get = [
   isLoggedIn,
@@ -144,6 +146,7 @@ exports.log_out = asyncHandler(async (req, res, next) => {
 
 exports.become_member_get = [
   isNotLoggedIn,
+  isMember,
   asyncHandler(async (req, res, next) => {
     res.render('become_member', { title: 'Become Member' });
   }),
@@ -182,6 +185,7 @@ exports.become_member_post = [
 
 exports.become_admin_get = [
   isNotLoggedIn,
+  isAdmin,
   asyncHandler(async (req, res, next) => {
     res.send('Become admin GET');
   }),
