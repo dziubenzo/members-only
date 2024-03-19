@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const formatDistanceToNow = require('date-fns').formatDistanceToNow;
 
 const Schema = mongoose.Schema;
 
@@ -23,9 +24,12 @@ const MessageSchema = new Schema({
   },
 });
 
-// Virtual for formatted date
-MessageSchema.virtual('date_formatted').get(function () {
-  return 'TODO';
+// Virtual for time distance to now
+MessageSchema.virtual('time_distance').get(function () {
+  return formatDistanceToNow(this.date, {
+    addSuffix: true,
+    includeSeconds: true,
+  });
 });
 
 module.exports = mongoose.model('Message', MessageSchema);
