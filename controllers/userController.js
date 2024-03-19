@@ -3,7 +3,9 @@ const User = require('../models/User');
 const asyncHandler = require('express-async-handler');
 
 exports.sign_up_get = asyncHandler(async (req, res, next) => {
-  res.send('Sign up GET');
+  // TODO: Redirect to Home if user is authenticated
+
+  res.render('sign_up');
 });
 
 exports.sign_up_post = asyncHandler(async (req, res, next) => {
