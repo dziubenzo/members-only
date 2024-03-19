@@ -115,7 +115,8 @@ body {
 }
 
 .sign-up-wrapper,
-.log-in-wrapper {
+.log-in-wrapper,
+.new-message-wrapper {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -136,7 +137,8 @@ body {
       align-items: center;
       gap: 16px;
 
-      input {
+      input,
+      textarea {
         outline: 2px solid $primary-colour;
         border: none;
         max-width: 200px;
@@ -148,6 +150,11 @@ body {
         &:focus-visible {
           outline: 3px solid $secondary-colour;
         }
+      }
+
+      textarea {
+        max-height: initial;
+        resize: vertical;
       }
     }
 

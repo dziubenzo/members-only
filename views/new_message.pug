@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  div.new-message-wrapper
+    h1 New Message
+    form(method="post")
+      div.form-control
+        label(for="title") Title:
+        input#title(type="text" name="title" value=(message===undefined ? '' : message.title) maxLength='64' required)
+      div.form-control
+        label(for="content") Content:
+        textarea#content(name="content" maxLength='160' rows=8 required) #{message===undefined ? '' : message.content}
+      div.submit-button
+        button(type="submit") Send
+  if errors
+    div.errors
+      for error in errors
+        p ERROR: #{error.msg}
