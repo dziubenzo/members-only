@@ -114,7 +114,8 @@ body {
   }
 }
 
-.sign-up-wrapper {
+.sign-up-wrapper,
+.log-in-wrapper {
   display: flex;
   flex-direction: column;
   gap: 16px;
