@@ -107,7 +107,9 @@ exports.sign_up_post = [
 ];
 
 exports.log_in_get = asyncHandler(async (req, res, next) => {
-  res.send('Log in GET');
+  // TODO: Redirect to Home if user is authenticated
+
+  res.render('log_in', { title: 'Log In' });
 });
 
 exports.log_in_post = asyncHandler(async (req, res, next) => {
