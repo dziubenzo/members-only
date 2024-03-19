@@ -2,15 +2,17 @@ const User = require('../models/User');
 
 const asyncHandler = require('express-async-handler');
 const { body, validationResult } = require('express-validator');
-const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
+const isLoggedIn = require('../config/passport').isLoggedIn;
+const isNotLoggedIn = require('../config/passport').isNotLoggedIn;
 
-exports.sign_up_get = asyncHandler(async (req, res, next) => {
-  // TODO: Redirect to Home if user is authenticated
-
-  res.render('sign_up', { title: 'Sign Up' });
-});
+exports.sign_up_get = [
+  isLoggedIn,
+  asyncHandler(async (req, res, next) => {
+    res.render('sign_up', { title: 'Sign Up' });
+  }),
+];
 
 exports.sign_up_post = [
   // Validate and sanitise all sign up form fields
@@ -107,11 +109,14 @@ exports.sign_up_post = [
   }),
 ];
 
-exports.log_in_get = asyncHandler(async (req, res, next) => {
-  // TODO: Redirect to Home if user is authenticated
+exports.log_in_get = [
+  isLoggedIn,
+  asyncHandler(async (req, res, next) => {
+    // TODO: Redirect to Home if user is authenticated
 
-  res.render('log_in', { title: 'Log In' });
-});
+    res.render('log_in', { title: 'Log In' });
+  }),
+];
 
 exports.log_in_post = [
   passport.authenticate('local', {
@@ -122,7 +127,7 @@ exports.log_in_post = [
   // Show login page with error if login attempt unsuccessful
   (err, req, res, next) => {
     const errorArray = [{ msg: 'Login failed. Please try again.' }];
-    res.render('log_in', { errors: errorArray });
+    res.render('log_in', { title: 'Log In', errors: errorArray });
     return;
   },
 ];
@@ -139,17 +144,23 @@ exports.log_out = asyncHandler(async (req, res, next) => {
   });
 });
 
-exports.become_member_get = asyncHandler(async (req, res, next) => {
-  res.send('Become member GET');
-});
+exports.become_member_get = [
+  isNotLoggedIn,
+  asyncHandler(async (req, res, next) => {
+    res.send('Become member GET');
+  }),
+];
 
 exports.become_member_post = asyncHandler(async (req, res, next) => {
   res.send('Become member POST');
 });
 
-exports.become_admin_get = asyncHandler(async (req, res, next) => {
-  res.send('Become admin GET');
-});
+exports.become_admin_get = [
+  isNotLoggedIn,
+  asyncHandler(async (req, res, next) => {
+    res.send('Become admin GET');
+  }),
+];
 
 exports.become_admin_post = asyncHandler(async (req, res, next) => {
   res.send('Become admin POST');

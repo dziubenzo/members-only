@@ -39,3 +39,21 @@ exports.userObjectMiddleware = (req, res, next) => {
   res.locals.user = req.user;
   next();
 };
+
+// Redirect to Home when logged in
+exports.isLoggedIn = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    res.redirect('/');
+  } else {
+    next();
+  }
+};
+
+// Redirect to Home when NOT logged in
+exports.isNotLoggedIn = (req, res, next) => {
+  if (req.isUnauthenticated()) {
+    res.redirect('/');
+  } else {
+    next();
+  }
+};
