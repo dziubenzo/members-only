@@ -149,9 +149,36 @@ exports.become_member_get = [
   }),
 ];
 
-exports.become_member_post = asyncHandler(async (req, res, next) => {
-  res.send('Become member POST');
-});
+exports.become_member_post = [
+  // Validate and sanitise answer
+  body('answer', 'Wrong answer! Tip: the answer is 6, but not quite.')
+    .trim()
+    .isLength({ min: 1 })
+    .escape()
+    .custom((value) => {
+      return value.toString() === process.env.MEMBER_CORRECT_ANSWER.toString();
+    }),
+
+  asyncHandler(async (req, res, next) => {
+    // Extract the validation errors from a request
+    const errors = validationResult(req);
+
+    const userID = req.user._id;
+
+    // Render the page again with sanitised values and error messages if there are errors
+    if (!errors.isEmpty()) {
+      res.render('become_member', {
+        title: 'Become Member',
+        errors: errors.array(),
+      });
+      return;
+    } else {
+      // Update user permissions and redirect to Home
+      await User.findByIdAndUpdate(userID, { is_member: true });
+      res.redirect('/');
+    }
+  }),
+];
 
 exports.become_admin_get = [
   isNotLoggedIn,
