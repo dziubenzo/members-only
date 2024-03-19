@@ -105,3 +105,58 @@ body {
   min-height: 100svh;
   max-width: 1200px;
 }
+
+.sign-up-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: center;
+
+  h1 {
+    color: $secondary-colour;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .form-control {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+
+      input {
+        outline: 2px solid $primary-colour;
+        border: none;
+        max-width: 200px;
+        max-height: 40px;
+        padding: 1em;
+        border-radius: 8px;
+        font-size: 1.1rem;
+
+        &:focus-visible {
+          outline: 3px solid $secondary-colour;
+        }
+      }
+    }
+
+    .submit-button {
+      button {
+        outline: 2px solid $primary-colour;
+        color: $secondary-colour;
+        border: none;
+        font-size: 1.5rem;
+        padding: 0.5em;
+        border-radius: 8px;
+        margin-top: 1em;
+        cursor: pointer;
+
+        &:focus-visible {
+          outline: 3px solid $secondary-colour;
+        }
+      }
+    }
+  }
+}
