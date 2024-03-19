@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  div.become-member-wrapper
+    form(method="post")
+      div.form-control
+        label(for="answer") 6÷2(1+2)
+        input#answer(type="text" name="answer" required)
+      div.submit-button
+        button(type="submit") Become Member
+  if errors
+    div.errors
+      for error in errors
+        p ERROR: #{error.msg}

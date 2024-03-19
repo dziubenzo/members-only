@@ -21,7 +21,7 @@ $font-family: 'Sarabun', sans-serif;
 header {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  margin-bottom: 2em;
+  margin-bottom: 3em;
 
   .navbar-left,
   .navbar-right {
@@ -89,7 +89,7 @@ footer {
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  margin-top: 2em;
+  margin-top: 3em;
 
   img {
     width: 32px;
@@ -120,7 +120,8 @@ body {
 
 .sign-up-wrapper,
 .log-in-wrapper,
-.new-message-wrapper {
+.new-message-wrapper,
+.become-member-wrapper {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -159,6 +160,18 @@ body {
       textarea {
         max-height: initial;
         resize: vertical;
+      }
+
+      input#answer {
+        min-width: initial;
+        width: 50px;
+        text-align: center;
+        margin-top: 1em;
+      }
+
+      label[for='answer'] {
+        color: $secondary-colour;
+        font-size: 2.5rem;
       }
     }
 
