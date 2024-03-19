@@ -112,8 +112,6 @@ exports.sign_up_post = [
 exports.log_in_get = [
   isLoggedIn,
   asyncHandler(async (req, res, next) => {
-    // TODO: Redirect to Home if user is authenticated
-
     res.render('log_in', { title: 'Log In' });
   }),
 ];
@@ -147,7 +145,7 @@ exports.log_out = asyncHandler(async (req, res, next) => {
 exports.become_member_get = [
   isNotLoggedIn,
   asyncHandler(async (req, res, next) => {
-    res.send('Become member GET');
+    res.render('become_member', { title: 'Become Member' });
   }),
 ];
 
