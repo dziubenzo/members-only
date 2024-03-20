@@ -103,9 +103,9 @@ exports.sign_up_post = [
         });
         return;
       } else {
-        // Save user and redirect to Home
+        // Save user and redirect to Log In page
         await newUser.save();
-        res.redirect('/');
+        res.redirect('/login');
       }
     }
   }),
