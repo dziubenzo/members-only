@@ -4,6 +4,8 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 require('dotenv').config();
+const compression = require('compression');
+const helmet = require('helmet');
 
 const session = require('express-session');
 const passport = require('passport');
@@ -28,6 +30,13 @@ async function main() {
   await mongoose.connect(mongoDB);
 }
 
+// Set up rate limiter: maximum of forty requests per minute
+const RateLimit = require('express-rate-limit');
+const limiter = RateLimit({
+  windowMs: 1 * 60 * 1000,
+  max: 40,
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -45,6 +54,9 @@ app.use(
   })
 );
 app.use(passport.session());
+app.use(compression());
+app.use(helmet());
+app.use(limiter);
 
 passport.use(passportConfig.localStrategy);
 passport.serializeUser(passportConfig.serialiseFunction);
