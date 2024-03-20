@@ -3,6 +3,7 @@ const Message = require('../models/Message');
 const asyncHandler = require('express-async-handler');
 const { body, validationResult } = require('express-validator');
 const isNotLoggedIn = require('../config/passport').isNotLoggedIn;
+const mustBeAdmin = require('../config/passport').mustBeAdmin;
 
 exports.new_message_get = [
   isNotLoggedIn,
@@ -51,5 +52,15 @@ exports.new_message_post = [
       await message.save();
       res.redirect('/');
     }
+  }),
+];
+
+exports.delete_message = [
+  mustBeAdmin,
+  asyncHandler(async (req, res, next) => {
+    // Delete message based on URL parameter
+    // Redirect to Home
+    await Message.findByIdAndDelete(req.params.id);
+    res.redirect('/');
   }),
 ];

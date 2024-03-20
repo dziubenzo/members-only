@@ -75,3 +75,12 @@ exports.isAdmin = (req, res, next) => {
     next();
   }
 };
+
+// Must be admin to continue
+exports.mustBeAdmin = (req, res, next) => {
+  if (req.user.is_admin) {
+    next();
+  } else {
+    res.redirect('/');
+  }
+};
