@@ -275,4 +275,11 @@ body {
   width: 32px;
   background-color: initial;
   filter: invert(85%) sepia(12%) saturate(1320%) hue-rotate(121deg) brightness(87%) contrast(91%);
+}
+
+.error-page {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
 }/*# sourceMappingURL=style.css.map */
