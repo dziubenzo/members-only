@@ -21,8 +21,7 @@ exports.new_message_post = [
 
   body('content', 'Content field must contain between 3 and 160 characters.')
     .trim()
-    .isLength({ min: 3, max: 160 })
-    .escape(),
+    .isLength({ min: 3, max: 160 }),
 
   asyncHandler(async (req, res, next) => {
     // Extract the validation errors from a request
