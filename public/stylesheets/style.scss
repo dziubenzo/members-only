@@ -31,6 +31,10 @@ header {
 
   .navbar-left {
     justify-content: flex-start;
+
+    .username {
+      color: $secondary-colour;
+    }
   }
 
   .navbar-right {
@@ -267,4 +271,61 @@ body {
   flex-direction: column;
   gap: 32px;
   align-items: center;
+
+  h1 {
+    color: $secondary-colour;
+  }
+}
+
+/* 
+Mobile media query
+*/
+
+@media (width <= 600px) {
+  header {
+    grid-template-columns: 1fr 2fr 1fr;
+
+    ul {
+      li {
+        a {
+          text-underline-offset: 0.35em;
+        }
+      }
+    }
+
+    .items-left-logged {
+      text-align: start;
+    }
+
+    .items-right-logged {
+      text-align: end;
+    }
+
+    .app-name {
+      display: flex;
+      justify-content: center;
+      font-size: 2rem;
+    }
+  }
+
+  .sign-up-wrapper,
+  .log-in-wrapper,
+  .new-message-wrapper,
+  .become-member-wrapper,
+  .become-admin-wrapper {
+    form {
+      .form-control {
+        input,
+        textarea {
+          min-width: 285px;
+        }
+      }
+
+      .submit-button {
+        button {
+          font-size: 1.25rem;
+        }
+      }
+    }
+  }
 }

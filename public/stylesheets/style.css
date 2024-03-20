@@ -23,6 +23,9 @@ header .navbar-right {
 header .navbar-left {
   justify-content: flex-start;
 }
+header .navbar-left .username {
+  color: #ffffff;
+}
 header .navbar-right {
   justify-content: flex-end;
 }
@@ -282,4 +285,49 @@ body {
   flex-direction: column;
   gap: 32px;
   align-items: center;
+}
+.error-page h1 {
+  color: #ffffff;
+}
+
+/* 
+Mobile media query
+*/
+@media (width <= 600px) {
+  header {
+    grid-template-columns: 1fr 2fr 1fr;
+  }
+  header ul li a {
+    text-underline-offset: 0.35em;
+  }
+  header .items-left-logged {
+    text-align: start;
+  }
+  header .items-right-logged {
+    text-align: end;
+  }
+  header .app-name {
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+  }
+  .sign-up-wrapper form .form-control input,
+  .sign-up-wrapper form .form-control textarea,
+  .log-in-wrapper form .form-control input,
+  .log-in-wrapper form .form-control textarea,
+  .new-message-wrapper form .form-control input,
+  .new-message-wrapper form .form-control textarea,
+  .become-member-wrapper form .form-control input,
+  .become-member-wrapper form .form-control textarea,
+  .become-admin-wrapper form .form-control input,
+  .become-admin-wrapper form .form-control textarea {
+    min-width: 285px;
+  }
+  .sign-up-wrapper form .submit-button button,
+  .log-in-wrapper form .submit-button button,
+  .new-message-wrapper form .submit-button button,
+  .become-member-wrapper form .submit-button button,
+  .become-admin-wrapper form .submit-button button {
+    font-size: 1.25rem;
+  }
 }/*# sourceMappingURL=style.css.map */
