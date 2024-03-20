@@ -35,6 +35,7 @@ const RateLimit = require('express-rate-limit');
 const limiter = RateLimit({
   windowMs: 1 * 60 * 1000,
   max: 40,
+  validate: { xForwardedForHeader: false },
 });
 
 // view engine setup
@@ -81,7 +82,7 @@ app.use(function (err, req, res, next) {
 
   // Render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error', { title: 'Error' });
 });
 
 module.exports = app;
